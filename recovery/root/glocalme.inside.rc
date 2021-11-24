@@ -1,0 +1,51 @@
+# This file add glocalme inside program script add by wangliang date:2014-05-05
+
+#uC_MsgRouter  autorun config  add by wei.shu   2014-05-05
+service mosquitto /system/bin/uC_MsgRouter -c /system/etc/mosquitto.conf
+    class main
+    user root
+    oneshot
+#uC_Log  autorun config  add by cheng.huang   2014-10-29
+service uC_Log /system/bin/uC_Log 
+    class main
+    user root    
+    
+#uC_MainServer, app_socket,  uC_GloServer, autorun config  add by wangliang  2014-05-05
+service mainserver /system/bin/uC_MainServer
+    class main
+    socket rilj stream 660 root radio
+    user root
+
+#service uC_RappSoc /system/bin/uC_RappSoc
+#    class main
+#    user root
+
+#uC_Rild autorun config  add by zhuo.hangen  2014-05-05 
+service uC_Rild /system/bin/uC_Rild
+    class main
+    user root
+
+service uC_GloServer /system/bin/uC_GloServer
+    class main
+    user root
+
+#uC_WebServer  autorun config  add by mc.meng   2014-05-05
+service uC_WebServer /system/bin/uC_WebServer
+    class main
+    user root
+
+service uC_Gnet /system/bin/uC_Gnet
+    class main
+    user root
+
+#uc_netlink added by chenjingbing
+service uc_netlink /system/bin/uc_netlink
+    class main
+    user root
+
+#add by luxuelin
+service file_check /system/bin/sh /system/bin/system_file_check.sh
+    class main
+    user root
+    oneshot
+#end
